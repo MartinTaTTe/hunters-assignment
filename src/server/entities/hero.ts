@@ -17,6 +17,10 @@ export class Hero {
 
 	@Field()
 	@Column()
+	role: string;
+
+	@Field()
+	@Column()
 	imgUrl: string;
 
 	@Field()
