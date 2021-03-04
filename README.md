@@ -1,3 +1,7 @@
+# Note!
+
+The heroes with `userId = 1 | 2` (Porcu and Lisa) have access to the vault while the hero with `userId = 3` (Gideon) does not. Testing functionality can be done as described below.
+
 # Home assignment
 
 For this assignment we have created a GraphQL API and a simple React application that queries infromation from that API. It is your job to finalize this application, either from frontend or backend side. More information of these tracks down below in Tracks section.
