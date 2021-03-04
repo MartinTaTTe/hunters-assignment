@@ -1,3 +1,4 @@
+require('dotenv').config();
 import 'reflect-metadata';
 import { useContainer, ConnectionOptions, createConnection } from 'typeorm';
 import { Container } from 'typedi';
