@@ -16,6 +16,7 @@ import { VaultResolver } from './resolvers/vault-resolver';
 import { AuthTokenResolver } from './resolvers/auth-resolver';
 
 import { seedDatabase } from './helpers';
+import { authChecker } from './auth-checker';
 
 useContainer(Container);
 
@@ -37,9 +38,13 @@ const bootstrapApp = async () => {
 		const schema = await TypeGraphQl.buildSchema({
 			resolvers: [HeroResolver, VaultResolver, AuthTokenResolver],
 			container: Container,
+			authChecker: authChecker,
 		});
 
-		const server = new ApolloServer({ schema });
+		const server = new ApolloServer({schema, context: ({ req }) => {
+				return { token: req.headers.authorization };
+			}
+		});
 
 		const { url } = await server.listen(4000);
 		console.log(`Server is running, GraphQL Playground available at ${url}`);
